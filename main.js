@@ -70,7 +70,10 @@ function addBook(book) {
   Book.addBook(book);
 }
 
-
+function removeBook(bookId) {
+  Book.removeBook(bookId);
+}
+removeBook();
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
