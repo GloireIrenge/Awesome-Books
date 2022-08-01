@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome-Books</title>
+</head>
+
+<body>
+    <main>
+        <div id="table">
+            <div class="container mt-3">
+                <h2 class="text-center text-primary">Awesome Books</h2>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Authors</th>
+                            <th>Books</th>
+                            <th>Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ctn-book">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="form">
+            <form class="container mt-5 form-add">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Enter Title" name="title" id="title">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Enter Authors name" name="Author" id="author">
+                    </div>
+                    <button class="bg-primary text-light m-2 p-2 border-0" id="button" type="button">Add</button>
+                </div>
+            </form>
+        </div>
+        
+    </main>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
