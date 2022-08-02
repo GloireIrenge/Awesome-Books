@@ -1,89 +1,61 @@
-const titleInput = document.getElementById('title');
-const authorInput = document.getElementById('author');
-const submitButton = document.getElementById('button');
-const radix = 10;
+const title = document.getElementById('title');
+const author = document.getElementById('author');
+const submit = document.getElementById('submit');
+const bookDisplay = document.getElementById('display');
 
-function loadLocalStorage() {
-  if (localStorage.getItem('book') === null) {
-    localStorage.setItem('book', JSON.stringify([]));
-    const data = localStorage.getItem('book');
-    const bookStorage = JSON.parse(data);
-    return bookStorage;
-  }
-  const data = localStorage.getItem('book');
-  const bookStorage = JSON.parse(data);
-  return bookStorage;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  let str = '';
+  let bookArr = [];
 
-let storage = loadLocalStorage();
-
-function updateLocalStorage() {
-  localStorage.setItem('book', JSON.stringify(storage));
-}
-
-const renderBook = (book) => {
-  const { id, title, author } = book;
-
-  const renderContainer = document.createElement('tr');
-  renderContainer.innerHTML = `
-        <td>${id}</td>
-        <td>${title}</td>
-        <td>${author}</td>
-        <td>
-        <button class="bg-danger text-light border-0 d-block" type="button" onclick="removeBook('${book.id}')">Delete</button></td>
-  `;
-  return renderContainer;
-};
-
-const renderBooks = () => {
-  const container = document.getElementById('ctn-book');
-  container.innerHTML = '';
-  if (storage !== null) {
-    storage.forEach((book) => {
-      container.appendChild(renderBook(book));
+  const DisplayBooks = () => {
+    if (localStorage.getItem('book') === null) {
+      localStorage.setItem('book', JSON.stringify(bookArr));
+    } else {
+      const bookArrStr = localStorage.getItem('book');
+      bookArr = JSON.parse(bookArrStr);
+    }
+    bookArr.map((display, index) => {
+      str += `
+              <p>${display[0]}</p>
+              <p>${display[1]}</p>
+              <button onclick='remove(${index})'>Remove</button>
+              <hr>
+          `;
+      return str;
     });
-  }
-};
+    bookDisplay.innerHTML = str;
+  };
 
-class Book {
-  constructor(id, title, author) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-  }
+  submit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const bookTitle = title.value;
+    const B_Author = author.value;
+    if (localStorage.getItem('book') === null) {
+      const bookArr = [];
+      bookArr.push([bookTitle, B_Author]);
+      localStorage.setItem('book', JSON.stringify(bookArr));
+    } else {
+      const bookArrStr = localStorage.getItem('book');
+      bookArr = JSON.parse(bookArrStr);
+      bookArr.push([bookTitle, B_Author]);
+      localStorage.setItem('book', JSON.stringify(bookArr));
+    }
+    title.value = '';
+    author.value = '';
+    str = '';
+    bookDisplay.innerHTML = str;
+    DisplayBooks();
+  });
 
-  static addBook(book) {
-    storage.push(book);
-    updateLocalStorage();
-    renderBooks();
-  }
+  remove = (id) => {
+    const bookArrStr = localStorage.getItem('book');
+    bookArr = JSON.parse(bookArrStr);
+    bookArr.splice(id, 1);
+    localStorage.setItem('book', JSON.stringify(bookArr));
+    str = '';
+    bookDisplay.innerHTML = str;
+    DisplayBooks();
+  };
 
-  static removeBook(bookId) {
-    const books = storage.filter((item) => item.id !== parseInt(bookId, radix));
-    storage = books;
-    updateLocalStorage();
-    renderBooks();
-  }
-}
-
-function addBook(book) {
-  Book.addBook(book);
-}
-
-function removeBook(bookId) {
-  Book.removeBook(bookId);
-}
-removeBook();
-
-submitButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  const id = storage.length + 1;
-  const title = titleInput.value;
-  const author = authorInput.value;
-  const book = new Book(id, title, author);
-  titleInput.value = '';
-  authorInput.value = '';
-  addBook(book);
-  renderBooks();
+  DisplayBooks();
 });
-renderBooks();
