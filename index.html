@@ -10,35 +10,19 @@
 
 <body>
     <main>
-        <div id="table">
-            <div class="container mt-3">
-                <h2 class="text-center text-primary">Awesome Books</h2>
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Authors</th>
-                            <th>Books</th>
-                            <th>Effect</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ctn-book">
-                    </tbody>
-                </table>
-            </div>
+        
+        <h1>Awesome Book</h1>
+        <div id="display"></div>
         </div>
 
         <div id="form">
-            <form class="container mt-5 form-add">
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Enter Title" name="title" id="title">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Enter Authors name" name="Author" id="author">
-                    </div>
-                    <button class="bg-primary text-light m-2 p-2 border-0" id="button" type="button">Add</button>
-                </div>
+            <form>
+              <div class="form">
+                <input type="text" placeholder="Title" id="title"/></br>
+                <input type="text" placeholder="Author" id="author"/></br>
+                <button id="submit" type="button">Add Book</button>
+              </div>
+            </form>
             </form>
         </div>
         
