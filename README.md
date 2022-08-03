@@ -8,7 +8,7 @@ This is a web app to add your books in a digital shelf. This app is built with  
 
 
 ## Getting Started
-git clone https://gloireirenge.github.io/Art-exhibition-project.git
+git clone https://github.com/GloireIrenge/Awesome-Books.git
 
 
 To get a local copy up and running follow these simple example steps.
