@@ -5,20 +5,20 @@ const bookDisplay = document.getElementById('display');
 
 document.addEventListener('DOMContentLoaded', () => {
   let ElementStr = '';
-  let bookArr = [];
+  let MyArr = [];
 
   const DisplayBooks = () => {
-    if (localStorage.getItem('book') === null) {
-      localStorage.setItem('book', JSON.stringify(bookArr));
+    if (localStorage.getItem('item') === null) {
+      localStorage.setItem('item', JSON.stringify(MyArr));
     } else {
-      const bookArrStr = localStorage.getItem('book');
-      bookArr = JSON.parse(bookArrStr);
+      const BookString = localStorage.getItem('item');
+      MyArr = JSON.parse(BookString);
     }
-    bookArr.map((display, index) => {
+    MyArr.map((show, items) => {
       ElementStr += `<tr>
-              <td>${display[0]}</td>
-              <td>${display[1]}</td>
-              <td><button onclick='remove(${index})'>Remove</button><td>
+              <td>${show[0]}</td>
+              <td>${show[1]}</td>
+              <td><button onclick=' BookRemove(${items})'>Remove</button><td>
               </tr>
           `;
       return ElementStr;
@@ -28,17 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submit.addEventListener('click', (e) => {
     e.preventDefault();
-    const bookTitle = title.value;
-    const BookAuthor = author.value;
-    if (localStorage.getItem('book') === null) {
-      const bookArr = [];
-      bookArr.push([bookTitle, BookAuthor]);
-      localStorage.setItem('book', JSON.stringify(bookArr));
+    const Title = title.value;
+    const Author = author.value;
+    if (localStorage.getItem('item') === null) {
+      const MyArr = [];
+      MyArr.push([Title, Author]);
+      localStorage.setItem('item', JSON.stringify(MyArr));
     } else {
-      const bookArrStr = localStorage.getItem('book');
-      bookArr = JSON.parse(bookArrStr);
-      bookArr.push([bookTitle, BookAuthor]);
-      localStorage.setItem('book', JSON.stringify(bookArr));
+      const BookString = localStorage.getItem('item');
+      MyArr = JSON.parse(BookString);
+      MyArr.push([Title, Author]);
+      localStorage.setItem('item', JSON.stringify(MyArr));
     }
     title.value = '';
     author.value = '';
@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     DisplayBooks();
   });
 
-  remove = (id) => {
-    const bookArrStr = localStorage.getItem('book');
-    bookArr = JSON.parse(bookArrStr);
-    bookArr.splice(id, 1);
-    localStorage.setItem('book', JSON.stringify(bookArr));
+  BookRemove = (id) => {
+    const BookString = localStorage.getItem('item');
+    MyArr = JSON.parse(BookString);
+    MyArr.splice(id, 1);
+    localStorage.setItem('item', JSON.stringify(MyArr));
     ElementStr = '';
     bookDisplay.innerHTML = ElementStr;
     DisplayBooks();
