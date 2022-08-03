@@ -1,4 +1,30 @@
 body {
   background-color: #fff;
   color: black;
+  text-align: center;
 }
+
+table {
+  border-collapse: collapse;
+  width: 30%;
+  text-align: center;
+  border: 1px #000 solid;
+  margin-left: 35%;
+}
+
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+input {
+  padding: 8px;
+  margin: 8px;
+  width: 30%;
+}
+
+button {
+  margin-left: 25%;
+}
+
+tr:nth-child(even) { background-color: #f2f2f2; }
