@@ -4,7 +4,7 @@ const submit = document.getElementById('submit');
 const bookDisplay = document.getElementById('display');
 
 document.addEventListener('DOMContentLoaded', () => {
-  let str = '';
+  let ElementStr = '';
   let bookArr = [];
 
   const DisplayBooks = () => {
@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
       bookArr = JSON.parse(bookArrStr);
     }
     bookArr.map((display, index) => {
-      str += `
-              <p>${display[0]}</p>
-              <p>${display[1]}</p>
-              <button onclick='remove(${index})'>Remove</button>
-              <hr>
+      ElementStr += `<tr>
+              <td>${display[0]}</td>
+              <td>${display[1]}</td>
+              <td><button onclick='remove(${index})'>Remove</button><td>
+              </tr>
           `;
-      return str;
+      return ElementStr;
     });
-    bookDisplay.innerHTML = str;
+    bookDisplay.innerHTML = ElementStr;
   };
 
   submit.addEventListener('click', (e) => {
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     title.value = '';
     author.value = '';
-    str = '';
-    bookDisplay.innerHTML = str;
+    ElementStr = '';
+    bookDisplay.innerHTML = ElementStr;
     DisplayBooks();
   });
 
@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     bookArr = JSON.parse(bookArrStr);
     bookArr.splice(id, 1);
     localStorage.setItem('book', JSON.stringify(bookArr));
-    str = '';
-    bookDisplay.innerHTML = str;
+    ElementStr = '';
+    bookDisplay.innerHTML = ElementStr;
     DisplayBooks();
   };
 
