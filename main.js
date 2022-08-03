@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
   submit.addEventListener('click', (e) => {
     e.preventDefault();
     const bookTitle = title.value;
-    const B_Author = author.value;
+    const BookAuthor = author.value;
     if (localStorage.getItem('book') === null) {
       const bookArr = [];
-      bookArr.push([bookTitle, B_Author]);
+      bookArr.push([bookTitle, BookAuthor]);
       localStorage.setItem('book', JSON.stringify(bookArr));
     } else {
       const bookArrStr = localStorage.getItem('book');
       bookArr = JSON.parse(bookArrStr);
-      bookArr.push([bookTitle, B_Author]);
+      bookArr.push([bookTitle, BookAuthor]);
       localStorage.setItem('book', JSON.stringify(bookArr));
     }
     title.value = '';
