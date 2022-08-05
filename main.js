@@ -2,6 +2,21 @@ const titleInput = document.getElementById('title');
 const authorInput = document.getElementById('author');
 const submitButton = document.getElementById('submit');
 const index = 10;
+const bookListDiv = document.getElementById('list');
+const formDiv = document.getElementById('form');
+const contactDiv = document.getElementById('contact');
+const NavList = document.getElementById('Mylist');
+const NavAdd = document.getElementById('AddBooks');
+const NavContact = document.getElementById('Mycontact');
+const dateElement = document.getElementById('date');
+
+function TodayDate(date) {
+  const match = date.toString().match(/\w{3} \w{3} \d{1,2} \d{4}/);
+  return `${match[0]}`;
+}
+const today = new Date();
+dateElement.textContent = TodayDate(today);
+
 
 function loadLocalStorage() {
   if (localStorage.getItem('mybook') === null) {
@@ -85,4 +100,47 @@ submitButton.addEventListener('click', (e) => {
   DisplayBooks();
 });
 
+function constructListSection() {
+  bookListDiv.style.display = 'block';
+  formDiv.style.display = 'none';
+  contactDiv.style.display = 'none';
+
+  renderBooks();
+}
+function constructFormSection() {
+  bookListDiv.style.display = 'none';
+  formDiv.style.display = 'block';
+  contactDiv.style.display = 'none';
+}
+function constructContactSection() {
+  bookListDiv.style.display = 'none';
+  formDiv.style.display = 'none';
+  contactDiv.style.display = 'block';
+}
+
+function section(page) {
+  switch (page) {
+    case 0:
+      constructListSection();
+      break;
+    case 1:
+      constructFormSection();
+      break;
+    case 2:
+      constructContactSection();
+      break;
+    default:
+      break;
+  }
+}
+NavList.addEventListener('click', () => {
+  section(0);
+});
+NavAdd.addEventListener('click', () => {
+  section(1);
+});
+NavContact.addEventListener('click', () => {
+  section(2);
+});
+section(0);
 DisplayBooks();
