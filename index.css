@@ -1,3 +1,7 @@
+.contact li {
+  list-style: none;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -7,7 +11,7 @@ ul.topnav {
   border: #000 1px solid;
 }
 
-ul.topnav li {float: right;}
+ul.topnav li { float: right; }
 
 ul.topnav li a {
   display: block;
@@ -22,18 +26,20 @@ ul.topnav li a:hover:not(.right) {
   color: darkcyan;
 }
 
-ul.topnav li.right {float: left;}
+ul.topnav li.right { float: left; }
 
 @media screen and (max-width: 600px) {
-  ul.topnav li.right, 
-  ul.topnav li {float: none;}
+  ul.topnav li.right,
+  ul.topnav li { float: none; }
 }
+
 body {
   background-color: #fff;
   color: black;
-  text-align: center; 
+  text-align: center;
 }
-main{
+
+main {
   min-height: 320px;
 }
 
@@ -53,7 +59,6 @@ td {
 input {
   padding: 8px;
   margin: 8px;
-  
   width: 30%;
 }
 
@@ -62,15 +67,13 @@ button {
 }
 
 tr:nth-child(even) { background-color: #f2f2f2; }
-footer{
+
+footer {
   border-top: #000 solid 1px;
   margin-bottom: 2%;
   margin-top: 10%;
+}
 
-}
-.date{
+.date {
   margin-left: 60%;
-}
-.contact li{
-  list-style: none;
 }
