@@ -17,7 +17,6 @@ function TodayDate(date) {
 const today = new Date();
 dateElement.textContent = TodayDate(today);
 
-
 function loadLocalStorage() {
   if (localStorage.getItem('mybook') === null) {
     localStorage.setItem('mybook', JSON.stringify([]));
